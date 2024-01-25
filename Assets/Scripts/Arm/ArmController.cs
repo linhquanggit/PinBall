@@ -12,7 +12,10 @@ namespace PinBall
         [SerializeField] private float lowerAngle ;
         [SerializeField] private float upperAngle ;
         [SerializeField] private string inputName ;
-        [SerializeField] private bool isActive ;
+        [SerializeField] private bool onRightClick;
+        [SerializeField] private bool isRight;
+
+        private Vector3 mousePos;
         // Start is called before the first frame update
         void Start()
         {
@@ -23,24 +26,50 @@ namespace PinBall
             limits.max = upperAngle; 
             hinge.limits = limits;
             hinge.useLimits = true;
+
+
         }
 
         void Update()
         {
-            if (Input.GetAxis(inputName)==1)
+            CheckPos();
+            if(onRightClick == isRight)
+            {
+                Flip();
+            }
+             
+        } 
+        private void Flip()
+        {
+            if (Input.GetMouseButtonDown(0))
             {
                 AudioManager.Instance.PlayFlipperSFXClip();
-                motor.motorSpeed = -flipperForce; // Điều này tạo ra lực quay cho flipper khi nhấn nút
+                motor.motorSpeed = -flipperForce;
+            }
+            else if (Input.GetMouseButton(0))
+            {
+                motor.motorSpeed = -flipperForce;
             }
             else
             {
-                motor.motorSpeed = flipperForce; // Đặt ngược lại motorSpeed để flipper tự động trở về vị trí ban đầu khi không nhấn nút
+                motor.motorSpeed = flipperForce;
             }
-
             hinge.motor = motor;
-
         }
-
-
+        private void CheckPos()
+        {
+            if(Input.GetMouseButtonDown(0))
+            {
+                Vector3 mousePos = Input.mousePosition;
+                if(mousePos.x > Screen.width/2)
+                {
+                    onRightClick = true;
+                }
+                else
+                {
+                    onRightClick = false;
+                }
+            }
+        }
     }
 }

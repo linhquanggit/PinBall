@@ -240,8 +240,9 @@ GameObject:
   - component: {fileID: 91213034}
   - component: {fileID: 91213033}
   - component: {fileID: 91213036}
+  - component: {fileID: 91213037}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Start
   m_TagString: Bottom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -305,8 +306,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91213031}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -22.8, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -22, z: 0}
   m_LocalScale: {x: 10, y: 1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -321,7 +322,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 91213031}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a9f53af3b51d4bd6b035a34be0293850, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -357,6 +358,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &91213037
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91213031}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,7 +1019,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 40820092146527940, guid: 756e405223e5eed4999e99521e191e92, type: 3}
       propertyPath: inputName
-      value: LeftFlipper
+      value: Mouse X
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1292,37 +1320,6 @@ Transform:
   - {fileID: 760030011}
   - {fileID: 1896784906}
   - {fileID: 877294358}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1657104917
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1657104918}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1657104918
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1657104917}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2, y: -6.4, z: -0.084782094}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1723775876 stripped
@@ -1796,8 +1793,12 @@ PrefabInstance:
       value: -135
       objectReference: {fileID: 0}
     - target: {fileID: 40820092146527940, guid: 756e405223e5eed4999e99521e191e92, type: 3}
+      propertyPath: isRight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 40820092146527940, guid: 756e405223e5eed4999e99521e191e92, type: 3}
       propertyPath: inputName
-      value: Jump
+      value: Mouse X
       objectReference: {fileID: 0}
     - target: {fileID: 40820092146527940, guid: 756e405223e5eed4999e99521e191e92, type: 3}
       propertyPath: lowerAngle
@@ -1898,11 +1899,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4275017052118892696, guid: 72726855950e3f94bb2025c343789585, type: 3}
       propertyPath: maxForce
-      value: 100
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: 4275017052118892696, guid: 72726855950e3f94bb2025c343789585, type: 3}
       propertyPath: minForce
-      value: 90
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4275017052118892696, guid: 72726855950e3f94bb2025c343789585, type: 3}
       propertyPath: randomX1
@@ -1912,6 +1913,10 @@ PrefabInstance:
       propertyPath: randomX2
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 4275017052118892696, guid: 72726855950e3f94bb2025c343789585, type: 3}
+      propertyPath: collider2D
+      value: 
+      objectReference: {fileID: 1751411672}
     - target: {fileID: 4275017052118892696, guid: 72726855950e3f94bb2025c343789585, type: 3}
       propertyPath: forceValue
       value: 0
@@ -1926,7 +1931,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5024250988259336424, guid: 72726855950e3f94bb2025c343789585, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -21.2
+      value: -20.73
       objectReference: {fileID: 0}
     - target: {fileID: 5024250988259336424, guid: 72726855950e3f94bb2025c343789585, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2480,4 +2485,3 @@ SceneRoots:
   - {fileID: 1984384865}
   - {fileID: 1955231176}
   - {fileID: 91213035}
-  - {fileID: 1657104918}

@@ -13,16 +13,12 @@ namespace PinBall
         [SerializeField] private float randomX;
         [SerializeField] private float randomX1;
         [SerializeField] private float randomX2;
-        [SerializeField] private Collider2D ballCollider;
         [SerializeField] private Vector3 startPos;
         private float verticalVelocity;
-        private float startBounciness;
         // Start is called before the first frame update
         void Start()
         {
-            startBounciness = ballCollider.sharedMaterial.bounciness;
-             startPos = new Vector3(0f, -21.8f, 0f);
-            
+            startPos = new Vector3(0f, -22f, 0f);
         }
         private void Update()
         {
@@ -36,26 +32,21 @@ namespace PinBall
                 randomX = randomX2;
             }
             forceValue = Random.Range(minForce, maxForce);
-        }
+        }    
         private void OnTriggerEnter2D(Collider2D collision)
         {
 
             if (collision.gameObject.CompareTag("Minus"))
             {
-
                 if (verticalVelocity > 0)
                 {
-                    ballCollider.sharedMaterial.bounciness = startBounciness;
-                    Debug.Log("Bounciness on up" + ballCollider.sharedMaterial.bounciness);     
                     AudioManager.Instance.PlayStartBallSFXClip();
                 }
                 else
                 {
-                    transform.position = new Vector3(0f, transform.position.y, transform.position.z);
-                    ballCollider.sharedMaterial.bounciness = 0f;
-                    Debug.Log("Bounciness on down" + ballCollider.sharedMaterial.bounciness);
                     GameManager.Instance.AddScore(-10);
                 }
+               
             }
         }
         private void OnCollisionEnter2D(Collision2D collision)
@@ -63,11 +54,17 @@ namespace PinBall
             if (collision.gameObject.CompareTag("Bottom"))
             {
                 Debug.Log("Bottom");
+                transform.position = new Vector3(0f, transform.position.y, transform.position.z);
                 transform.position = startPos;
-                Vector2 forceDirection = new Vector2(randomX, 14.5f);
-                Debug.Log("ForceDirection" + forceDirection);
-                rb.AddForce(forceDirection * forceValue);
+                StartCoroutine(IEStart());
             }
+        }
+
+        IEnumerator IEStart()
+        {
+            yield return new WaitForSeconds(1f);
+            Vector2 forceDirection = new Vector2(randomX-transform.position.x, 14.5f);
+            rb.AddForce(forceDirection * forceValue);
         }
 
     }
