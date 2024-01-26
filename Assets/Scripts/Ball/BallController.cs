@@ -23,16 +23,24 @@ namespace PinBall
         private void Update()
         {
             verticalVelocity = rb.velocity.y;
-            if (Random.Range(0, 2) == 0)
+            /*if (Random.Range(0, 2) == 0)
             {
                 randomX = randomX1;
             }
             else
             {
                 randomX = randomX2;
+            }*/
+            if (transform.position.x < 0)
+            {
+                randomX = randomX2;
+            }
+            else
+            {
+                randomX = randomX1;
             }
             forceValue = Random.Range(minForce, maxForce);
-        }    
+        }
         private void OnTriggerEnter2D(Collider2D collision)
         {
 
@@ -46,7 +54,7 @@ namespace PinBall
                 {
                     GameManager.Instance.AddScore(-10);
                 }
-               
+
             }
         }
         private void OnCollisionEnter2D(Collision2D collision)
@@ -62,8 +70,10 @@ namespace PinBall
 
         IEnumerator IEStart()
         {
+
+
             yield return new WaitForSeconds(1f);
-            Vector2 forceDirection = new Vector2(randomX-transform.position.x, 14.5f);
+            Vector2 forceDirection = new Vector2(randomX - transform.position.x, 14.5f);
             rb.AddForce(forceDirection * forceValue);
         }
 

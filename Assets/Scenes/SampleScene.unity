@@ -1899,11 +1899,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4275017052118892696, guid: 72726855950e3f94bb2025c343789585, type: 3}
       propertyPath: maxForce
-      value: 110
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4275017052118892696, guid: 72726855950e3f94bb2025c343789585, type: 3}
       propertyPath: minForce
-      value: 100
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4275017052118892696, guid: 72726855950e3f94bb2025c343789585, type: 3}
       propertyPath: randomX1
