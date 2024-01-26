@@ -12,23 +12,15 @@ namespace PinBall
         void Start()
         {
             scale = false;
-            animator.SetBool("IsBumper", false);
-            animator.SetBool("IsIdle", true);
+            animator.SetBool("IsBumper", scale);
+            animator.SetBool("IsIdle", !scale);
         }
 
         // Update is called once per frame
         void Update()
         {
-            if(scale)
-            {
-                animator.SetBool("IsBumper", true);
-                animator.SetBool("IsIdle", false);
-            }
-            else
-            {
-                animator.SetBool("IsBumper", false);
-                animator.SetBool("IsIdle", true);
-            }
+            animator.SetBool("IsBumper", scale);
+            animator.SetBool("IsIdle", !scale);
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {

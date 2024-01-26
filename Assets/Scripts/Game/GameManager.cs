@@ -50,13 +50,11 @@ namespace PinBall
         void Start()
         {
             SpawnManager.Instance.SpawnObiettivi(GetRandomPos());
-
         }
 
         // Update is called once per frame
         void Update()
         {
-
             GetRandomPos();
         }
         private Vector3 GetRandomPos()
@@ -79,20 +77,14 @@ namespace PinBall
             }
             onScoreChanged(score);
         }
+        public void RespawnObietivi(bool respawn)
+        {
+            OnObiettiviDestroyed(respawn);
+        }
         public void OnObiettiviDestroyed(bool spawn)
         {
             SpawnManager.Instance.SpawnObiettivi(GetRandomPos());
         }
-        public void RespawnObietivi(bool respan)
-        {
-            if(respan)
-            {
-                OnObiettiviDestroyed(true);
-            }
-            else
-            {
-                OnObiettiviDestroyed(false);
-            }
-        }
+       
     }
 }

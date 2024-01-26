@@ -18,7 +18,6 @@ namespace PinBall
         {
             if (particlesSystem == null)
             {
-                Debug.Log("Not found particlesSystem");
                 return;
             }
 
