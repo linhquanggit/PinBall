@@ -13,6 +13,7 @@ namespace PinBall
         [SerializeField] private float randomX;
         [SerializeField] private float randomX1;
         [SerializeField] private float randomX2;
+        [SerializeField] private int minusScore;
         [SerializeField] private Vector3 startPos;
         private float verticalVelocity;
         // Start is called before the first frame update
@@ -44,7 +45,7 @@ namespace PinBall
                 }
                 else
                 {
-                    GameManager.Instance.AddScore(-10);
+                    GameManager.Instance.AddScore(minusScore);
                 }
 
             }

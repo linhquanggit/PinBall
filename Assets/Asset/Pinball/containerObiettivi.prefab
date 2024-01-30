@@ -2863,6 +2863,7 @@ MonoBehaviour:
   maxY: 3.5
   randomX: 0
   randomY: 0
+  obiettiviScore: 10
   particlesSystem: {fileID: 8885491501602731787}
 --- !u!1 &8885491496284408228
 GameObject:

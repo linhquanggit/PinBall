@@ -7,6 +7,7 @@ namespace PinBall
     public class BumperController : MonoBehaviour
     {
         [SerializeField] private Animator animator;
+        [SerializeField] private int bumperScore;
         private bool scale;
         // Start is called before the first frame update
         void Start()
@@ -27,7 +28,7 @@ namespace PinBall
             if (collision.gameObject.CompareTag("Ball"))
             {
                 scale = true;
-                GameManager.Instance.AddScore(1);
+                GameManager.Instance.AddScore(bumperScore);
                 AudioManager.Instance.PlayBumperSFXClip();
             }
         }

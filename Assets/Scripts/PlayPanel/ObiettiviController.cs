@@ -12,6 +12,7 @@ namespace PinBall
         [SerializeField] private float maxY;
         [SerializeField] private float randomX;
         [SerializeField] private float randomY;
+        [SerializeField] private int obiettiviScore;
         private ObiettiviContainer obiettiviContainer;
         [SerializeField] private ParticleSystem particlesSystem;
         private void Awake()
@@ -42,7 +43,7 @@ namespace PinBall
             if (collision.gameObject.CompareTag("Ball"))
             {
                 SpawnManager.Instance.ReleaseObiettivi(obiettiviContainer);
-                GameManager.Instance.AddScore(10);
+                GameManager.Instance.AddScore(obiettiviScore);
                 GameManager.Instance.RespawnObietivi(true);
                 AudioManager.Instance.PlayAddScoreSFXClip();
             }
